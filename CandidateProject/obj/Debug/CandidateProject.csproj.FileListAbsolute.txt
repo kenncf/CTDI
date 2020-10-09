@@ -56,3 +56,4 @@ E:\CTDI\CandidateProject\bin\roslyn\System.Reflection.Metadata.dll
 E:\CTDI\CandidateProject\bin\roslyn\vbc.exe
 E:\CTDI\CandidateProject\bin\roslyn\VBCSCompiler.exe
 E:\CTDI\CandidateProject\bin\roslyn\VBCSCompiler.exe.config
+E:\CTDI\CandidateProject\obj\Debug\CandidateProject.csprojAssemblyReference.cache

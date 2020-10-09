@@ -249,12 +249,22 @@ namespace CandidateProject.Controllers
                     Equipment = equipment
                 };
 
-                //check the carton detail count - must be lesser than 10
-                if (carton.CartonDetails.Count < _CartonLimit)
-                {
-                    carton.CartonDetails.Add(detail);
-                    db.SaveChanges();
+                //KF: solution to issue 2.2
+                //check first if this equipment is already added
+                if (db.CartonDetails.Where(e => e.EquipmentId == equipment.Id).Count()== 0){
+                    //check the carton detail count - must be lesser than 10
+                    if (carton.CartonDetails.Count < _CartonLimit)
+                    {
+                        carton.CartonDetails.Add(detail);
+                        db.SaveChanges();
+                    }
                 }
+                else
+                {
+                    //notify the user that the equipment is already assigned
+                    TempData["Error"] = equipment.SerialNumber + " is already in use.";
+                }
+                
             }
             return RedirectToAction("AddEquipment", new { id = addEquipmentViewModel.CartonId });
         }
