@@ -1,0 +1,36 @@
+﻿@model CandidateProject.ViewModels.CartonDetailsViewModel
+@{
+    ViewBag.Title = "AddEquipment";
+}
+
+<h2>AddEquipment</h2>
+
+<h3>@Html.DisplayFor(model => model.CartonNumber)</h3>
+<h4>@TempData["Status"]</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Equipment.FirstOrDefault().ModelType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Equipment.FirstOrDefault().SerialNumber)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Equipment)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Add", "AddEquipmentToCarton", new { cartonId = Model.CartonId, equipmentId = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
